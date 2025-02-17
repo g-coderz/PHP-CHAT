@@ -135,8 +135,8 @@ if(isset($_POST["logout"])) {
 
 usort($posts, 'post_date_latest_sort');
 
-function post_date_latest_sort($post1, $post2) {
-    return $post1->get_property('post_date') < $post2->get_property('post_date') ? 0 : ($post1->get_property('post_date') > $post2->get_property('post_date')) ? -1 : 1;
+function post_date_latest_sort($post1, $post2): int {
+    return strtotime(datetime: $post2['post_date']) - strtotime(datetime: $post1['post_date']);
 }
 
 function is_dir_empty($dir) {
